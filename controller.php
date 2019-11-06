@@ -19,7 +19,7 @@ if ($acao == 'recuperaFalaInfinity') {
 	$questaoService = new QuestaoService($conexao, $questao, $resposta);
 	$questoes = $questaoService->recuperar();
 
-	//print_r($questoes);
+	// print_r($questoes);
 	echo json_encode($questoes);
 
 } else if ($acao == 'inserirPergunta') {

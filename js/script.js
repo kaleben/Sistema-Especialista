@@ -28,7 +28,7 @@ $(document).ready(() => {
 
 		        	}); //fecha fadeOut
 
-		    	}, 1000); //fecha setInterval
+		    	}, 100); //fecha setInterval
 
 				clearInterval()
 
@@ -41,14 +41,14 @@ $(document).ready(() => {
 
 		    		//Correção erro input duplicado
 		    		if ($('#ultimo').html() == ultimo) { 
-		    			//$('#resposta').remove();
+		    			// $('#resposta').remove();
 		    		}
 
 		    		$('#resposta').append('<option value="entendi">Entendi!</option>');
 
 
 		    	} 
-		    	,1000 * (textos.length +1)); //fecha setTimesout
+		    	,100 * (textos.length +1)); //fecha setTimesout
 
 			}, //fecha start
 
@@ -70,10 +70,12 @@ $(document).ready(() => {
 			dataType: 'json',
 			success: dados => {
 
+				console.log(dados);
+
 				$('#ultimo').html(dados[0].pergunta);
 				$('option').remove();
 				$('#resposta').append('<option value="">Selecionar</option>');
-				for(var i = 0; i <= dados.length; i++)
+				for(var i = 0; i < dados.length; i++)
 				if (typeof(dados[i].resp_return) != 'undefined') {
 					$('#resposta').append(`<option value="${dados[i].valor}">${dados[i].resp_return}</option>`);
 				}

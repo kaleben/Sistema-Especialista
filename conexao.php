@@ -4,8 +4,8 @@ class Conexao {
 
 	private $host = 'localhost';
 	private $dbname = 'facul';
-	private $user = 'root';
-	private $pass = '';
+	private $user = 'allan';
+	private $pass = '123';
 
 	public function conectar() {
 
