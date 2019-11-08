@@ -5,6 +5,10 @@
 	<title>Sis Especialista</title>
 
 	<style>
+	.ia{
+		display: flex;
+		justify-content: center;
+	}
 	</style>
 
 	<link rel="stylesheet" href="css/estilo.css">
@@ -21,7 +25,7 @@
 				<div id="frases" class="col mt-3 text-center text-white"></div>
 				<div id="ultimo" class="col mt-3 text-center text-white"></div>
 
-				<div class="col-8 ml-auto mr-auto ">
+				<div class="col-12 ia">
 					<img src="img/ia.gif">
 				</div>
 
