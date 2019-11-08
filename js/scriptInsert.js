@@ -1,4 +1,4 @@
-$(document).ready(() => {
+﻿$(document).ready(() => {
 
 	$('#enviarPergunta').on('click', () => {
 

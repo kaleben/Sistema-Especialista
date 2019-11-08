@@ -1,9 +1,9 @@
-<?php 
+﻿<?php 
 
 class Conexao {
 
 	private $host = 'localhost';
-	private $dbname = 'facul';
+	private $dbname = 'facu';
 	private $user = 'allan';
 	private $pass = '123';
 

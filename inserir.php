@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 	
 	$acao = 'recuperaPerguntas';
 	require 'controller.php';

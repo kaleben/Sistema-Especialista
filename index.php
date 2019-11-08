@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<meta charset="UTF-8">
@@ -41,3 +41,38 @@
 </body>
 
 </html>
+
+<script>
+
+$('#enviar').on('click', function() {
+
+var val = $('#resposta').val();
+
+
+$.ajax({
+	type: 'GET',
+	url: `recuperaFalaInfinity.php?resposta=${val}`,
+	dataType: 'json',
+	success: dados => {
+
+		console.log(dados);
+
+		$('#ultimo').html(dados[0].pergunta);
+		$('option').remove();
+		$('#resposta').append('<option value="">Selecionar</option>');
+		for(var i = 0; i < dados.length; i++)
+		if (typeof(dados[i].resp_return) != 'undefined') {
+			$('#resposta').append(`<option value="${dados[i].valor}">${dados[i].resp_return}</option>`);
+		}
+
+	},
+	error: erro => {
+		console.log('Erro: '+erro)
+	}
+
+})
+
+
+})
+
+</script>

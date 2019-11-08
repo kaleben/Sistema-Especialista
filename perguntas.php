@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 
 $acao = 'recuperaAll';
 require 'controller.php';

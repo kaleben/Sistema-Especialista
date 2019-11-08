@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 
 	require "questao.php";
 	require "resposta.php";
