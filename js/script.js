@@ -28,7 +28,7 @@
 
 		        	}); //fecha fadeOut
 
-		    	}, 1000); //fecha setInterval
+		    	}, 3000); //fecha setInterval
 
 				clearInterval()
 
@@ -48,7 +48,7 @@
 
 
 		    	} 
-		    	,1000 * (textos.length +1)); //fecha setTimesout
+		    	,3000 * (textos.length +1)); //fecha setTimesout
 
 			}, //fecha start
 

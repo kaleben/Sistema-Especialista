@@ -1,15 +1,8 @@
 ﻿<?php 
-	
-	$acao = 'recuperaPerguntas';
-	require 'controller.php';
 
-	/*echo '<pre>';
-		//print_r($questoes);
-	echo '</pre>';
+$acao = 'recuperaPerguntas';
+require 'controller.php';
 
-	foreach ($questoes as $key => $value) {
-		echo $value->pergunta;
-	}*/
 ?>
 
 <!DOCTYPE html>
@@ -19,107 +12,110 @@
 	<title>Sis Especialista</title>
 
 	<style>
+		.row {
+			height: 100%
+		}
 	</style>
 
 	<!-- estilos -->
-	
+
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 	<link rel="stylesheet" href="css/estilo.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/8be91c1c19.js" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="js/scriptInsert.js"></script>
 
 </head>
 
-<body>
+<body style="margin-top: -24px">
 
-	<div class="nav-side-menu">
-		    <div class="brand">SIS ESPECIALISTA</div>
-		    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-		  
-		        <div class="menu-list">
-		  
-		            <ul id="menu-content" class="menu-content collapse out">
-		                <li>
-		                  <a href="inserir.php"><i class="fa fa-check-circle sidebar-icon" id="cadastro"></i>Cadastro</a>
-		                </li>
-		                
-		                <li>
-		                  <a href="perguntas.php"><i class="fa fa-question-circle sidebar-icon" id="perguntas"></i>Perguntas</a>
-		                </li>
+	<div class="container-fluid">
+		<div class="row min-vh-100">
+			<aside class="col-12 col-md-2 p-0 bg-dark" > <!--style="margin-bottom: -7.3%"-->
+				<nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+					<div class="collapse navbar-collapse">
+						<ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+							<li class="nav-item">
+								<a class="nav-link pl-0 text-nowrap sisesp" href="index.php"><span class="badge badge-warning">v1</span> <span class="font-weight-bold">Sis Especialista </span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link pl-0" href="inserir.php"><i class="fas fa-arrow-circle-up"></i> <span class="d-none d-md-inline">Cadastro</span></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link pl-0" href="perguntas.php"><i class="fas fa-book"></i> <span class="d-none d-md-inline">Perguntas</span></a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</aside>
+			<main class="col bg-faded py-3">
+				<div class="container mt-3" id="pagina">
+					<div id="alert"></div>
+					<div class="row">
+						<div class="col">
+							<h1 class="display-4 mb-3">Cadastrar Pergunta</h1>
+							<form class="mb-3" id="formPergunta" method="post">
+								<div class="form-group">
+									<label >Nova pergunta</label>
+									<input type="text" name="pergunta" class="form-control" id="pergunta" placeholder="" required>
+								</div>
+								<div class="form-group">
+									<label>Resposta de chamada</label>
+									<input type="text" name="resposta_chamada" class="form-control" id="resposta_chamada" placeholder="" required>
+								</div>
+								<button type="submit" class="btn btn-info" id="enviarPergunta">Enviar</button>
+							</form>
+							<hr>
+							<h1 class="display-4 mb-3">Cadastrar Resposta</h1>
+							<form id="formResposta" method="post">
+								<div class="form-group">
+									<label>Nova resposta</label>
+									<input type="text" name="nova_resposta" class="form-control" id="nova_resposta" placeholder="" required>
+								</div>
+								<div class="mb-3">
+									<label>Selecionar pergunta</label>
+									<select class="custom-select" name="id_pergunta" id="selectPerguntas">
+										<option selected>Selecionar..</option>
+										<? foreach ($questoes as $key => $value) { ?>
+											<option value="<?= $value->id_pergunta ?>"><?= $value->pergunta ?></option>
+										<? } ?>
+									</select>
+									<div class="col-2 form-group p-0 mt-1">   
+										<input type="text" class="form-control" id="mostraId" value="" disabled="" placeholder="Id Selecionado">
+									</div>
+								</div>
 
-		                <li>
-		                  <a href="index.php"><i class="fa fa-robot sidebar-icon" id="perguntas"></i>  Infinity</a>
-		                </li>		
-		                
-		            </ul>
-		     </div>
-		</div>	
-
-	<div class="container mt-3" id="pagina">
-
-		<div id="alert"></div>
-
-		<div class="row">
-				<div class="col">
-					<h1 class="display-4 mb-3">Cadastrar Pergunta</h1>
-					<form class="mb-3" id="formPergunta" method="post">
-						<div class="form-group">
-							<label >Nova pergunta</label>
-							<input type="text" name="pergunta" class="form-control" id="pergunta" placeholder="" required>
+								<div class="form-group">
+									<label>Value da nova resposta</label>
+									<input type="text" name="valor_resposta" class="form-control" id="valor_resposta" placeholder="" required>
+									<small>Letras minúsculas e nenhum acento!</small>
+								</div>
+								<button type="submit" class="btn btn-info" id="enviarResposta">Enviar</button>
+							</form>
 						</div>
-						<div class="form-group">
-							<label>Resposta de chamada</label>
-							<input type="text" name="resposta_chamada" class="form-control" id="resposta_chamada" placeholder="" required>
-						</div>
-						<button type="submit" class="btn btn-info" id="enviarPergunta">Enviar</button>
-					</form>
-			<hr>
-					<h1 class="display-4 mb-3">Cadastrar Resposta</h1>
-					<form id="formResposta" method="post">
-						<div class="mb-3">
-							<label>Selecionar pergunta</label>
-							<select class="custom-select" name="id_pergunta" id="selectPerguntas">
-							  <option selected>Selecionar..</option>
-							  <? foreach ($questoes as $key => $value) { ?>
-							  	<option value="<?= $value->id_pergunta ?>"><?= $value->pergunta ?></option>
-							  <? } ?>
-							</select>
-							<div class="col-2 form-group p-0 mt-1">   
-							    <input type="text" class="form-control" id="mostraId" value="" disabled="" placeholder="Id Selecionado">
-							 </div>
-						</div>
-						<div class="form-group">
-							<label>Nova resposta</label>
-							<input type="text" name="nova_resposta" class="form-control" id="nova_resposta" placeholder="" required>
-						</div>
-						<div class="form-group">
-							<label>Value da nova resposta</label>
-							<input type="text" name="valor_resposta" class="form-control" id="valor_resposta" placeholder="" required>
-							<small>Letras minúsculas e nenhum acento!</small>
-						</div>
-						<button type="submit" class="btn btn-info" id="enviarResposta">Enviar</button>
-					</form>
-
-					<div>
-						<hr>
-						<h3 class="text-danger">NÃO UTILIZE ACENTOS!</h3>
 					</div>
 				</div>
+			</main>
 		</div>
 	</div>
 
 </body>
 
 <script>
-	
+
 	$(document).ready(() => {
 
 		$('#selectPerguntas').change( () => {
-	    	$('#mostraId').val($('#selectPerguntas').val());
-    	});
+			$('#mostraId').val($('#selectPerguntas').val());
+			$('#valor_resposta').val($('#nova_resposta').val().toLowerCase()+'id'+$('#selectPerguntas').val());
+		});
+
+		$('.sisesp').on('click', function(e) {
+    		event.preventDefault();
+    		window.open($(this).attr("href")); 
+		});
 
 	})
 

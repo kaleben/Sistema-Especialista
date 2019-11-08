@@ -59,8 +59,6 @@ $.ajax({
 	dataType: 'json',
 	success: dados => {
 
-		console.log(dados);
-
 		$('#ultimo').html(dados[0].pergunta);
 		$('option').remove();
 		$('#resposta').append('<option value="">Selecionar</option>');
