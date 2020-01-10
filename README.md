@@ -1,5 +1,6 @@
 # Sistema-Especialista
 <h5>Sistema especialista criado para matéria de SEGURANÇA DE REDES DE COMUNICAÇÃO DE DADOS ministrada pelo professor Gilmar - Uniceplac 2019</h5>
+<h5>Obs: Pelo prazo determinado pelo professor, não foi utilizado padrão MVC. Mas foi feito o possível para que ouvesse um padrão!</h5>
 <h3> Iniciando o sistema </h3> <br>
 <p>1- Crie um banco de dados e importe o arquivo facu_completo.sql (//novo_banco/facu_completo.sql);</p>
 <p>2- No arquivo conexao.php (//conexao.php) altere as informações do banco de acordo com as utilizadas em sua maquina local;</p> 
